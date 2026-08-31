@@ -1,3 +1,14 @@
+from pathlib import Path
+import sys
+
+# Add the project's src directory to Python's import path.
+PROJECT_ROOT = Path(__file__).resolve().parent
+SRC_DIR = PROJECT_ROOT / "src"
+
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+
 import streamlit as st
 
 from agentic_ai.graph import invoke
@@ -40,25 +51,20 @@ with st.sidebar:
         ### Example prompts
 
         **Math**
-        ```
-        Calculate 125 * 48
-        ```
+
+        `Calculate 125 * 48`
 
         **Reminder**
-        ```
-        Remind me in 20 minutes to drink water
-        ```
+
+        `Remind me in 20 minutes to drink water`
 
         **Notes**
-        ```
-        Save a note titled Project Ideas
-        content: Build an AI assistant
-        ```
+
+        `Save a note titled Project Ideas`
 
         **General**
-        ```
-        Explain LangGraph simply
-        ```
+
+        `Explain LangGraph simply`
         """
     )
 
@@ -96,7 +102,7 @@ if prompt:
             except Exception as exc:
                 response = (
                     "I encountered an error:\n\n"
-                    f"`{exc}`"
+                    f"`{type(exc).__name__}: {exc}`"
                 )
 
             st.markdown(response)
