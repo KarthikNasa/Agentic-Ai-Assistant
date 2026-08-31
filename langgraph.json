@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "agentic_assistant": "./src/agentic_ai/graph.py:graph"
+  },
+  "env": ".env"
+}
