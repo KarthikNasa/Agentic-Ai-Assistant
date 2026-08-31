@@ -17,20 +17,15 @@ def get_client() -> genai.Client:
             "GEMINI_API_KEY is not configured."
         )
 
-    return genai.Client(api_key=GEMINI_API_KEY)
+    return genai.Client(
+        api_key=GEMINI_API_KEY,
+    )
 
 
 def generate_text(
     prompt: str,
     system_instruction: str | None = None,
 ) -> str:
-    """
-    Generate text using Gemini.
-
-    This function deliberately uses only the Gemini API.
-    All application tools remain local and free.
-    """
-
     client = get_client()
 
     config = types.GenerateContentConfig(
@@ -46,6 +41,8 @@ def generate_text(
     )
 
     if not response.text:
-        raise RuntimeError("Gemini returned an empty response.")
+        raise RuntimeError(
+            "Gemini returned an empty response."
+        )
 
     return response.text.strip()
