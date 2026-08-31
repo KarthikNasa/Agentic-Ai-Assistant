@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "agentic-ai-assistant"
+version = "1.0.0"
+description = "Free-tier agentic AI personal assistant using Gemini, LangGraph and SQLite"
+requires-python = ">=3.11"
+dependencies = [
+    "google-genai>=1.30.0",
+    "langgraph>=0.6.0",
+    "streamlit>=1.48.0",
+    "python-dotenv>=1.1.0",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.0",
+    "pytest-cov>=6.2.0",
+    "ruff>=0.12.0",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-v"
+
+
+[tool.ruff]
+line-length = 79
+target-version = "py311"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
