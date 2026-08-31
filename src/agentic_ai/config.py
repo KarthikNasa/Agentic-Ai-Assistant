@@ -14,7 +14,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 # Gemini model with free-tier availability.
 GEMINI_MODEL = os.getenv(
     "GEMINI_MODEL",
-    "gemini-3.1-flash-lite",
+    "gemini-3.6-flash",
 )
 
 DATABASE_PATH = os.getenv(
